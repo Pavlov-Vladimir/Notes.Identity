@@ -13,4 +13,4 @@ global using Microsoft.EntityFrameworkCore;
 global using Notes.Identity.Models;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using Notes.Identity.Data;
-
+global using Microsoft.Extensions.FileProviders;

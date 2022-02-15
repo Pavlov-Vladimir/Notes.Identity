@@ -2,7 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 IConfiguration configuration = builder.Configuration;
 
-string? connectionString = configuration.GetConnectionString("DbConnection");
+string? connectionString = configuration.GetSection("DbConnection").Value;
 
 IServiceCollection services = builder.Services;
 
@@ -36,6 +36,8 @@ services.AddIdentityServer()
     .AddInMemoryClients(Configuration.Clients)
     .AddDeveloperSigningCredential();
 
+services.AddControllersWithViews();
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -53,7 +55,19 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(app.Environment.ContentRootPath, "Styles")),
+    RequestPath = "/styles"
+});
+
+app.UseRouting();
+
 app.UseIdentityServer();
-app.MapGet("/", () => "Hello World!");
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapDefaultControllerRoute();
+});
 
 app.Run();
