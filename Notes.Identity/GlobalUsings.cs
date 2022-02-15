@@ -14,3 +14,6 @@ global using Notes.Identity.Models;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using Notes.Identity.Data;
 global using Microsoft.Extensions.FileProviders;
+global using IdentityServer4.Services;
+global using Microsoft.AspNetCore.Mvc;
+global using System.ComponentModel.DataAnnotations;

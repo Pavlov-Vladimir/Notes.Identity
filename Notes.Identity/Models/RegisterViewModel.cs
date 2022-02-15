@@ -1,5 +1,5 @@
 ﻿namespace Notes.Identity.Models;
-public class LoginViewModel
+public class RegisterViewModel
 {
     [Required]
     public string Username { get; set; } = null!;
@@ -8,5 +8,11 @@ public class LoginViewModel
     [DataType(DataType.Password)]
     public string Password { get; set; } = null!;
 
+    [Required]
+    [DataType(DataType.Password)]
+    [Compare("Password")]
+    public string ConfirmPassword { get; set; } = null!;
+
     public string? ReturnUrl { get; set; }
+
 }
