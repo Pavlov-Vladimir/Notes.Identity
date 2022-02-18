@@ -38,7 +38,7 @@ public static class Configuration
                 RedirectUris = { "http://.../signin-oidc" },
                 AllowedCorsOrigins = { "http://..." },
                 PostLogoutRedirectUris = { "http://.../signout-oidc" },
-                AllowedScopes = 
+                AllowedScopes =
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
@@ -51,7 +51,7 @@ public static class Configuration
                 ClientSecrets = { new Secret("client-secret-swagger".Sha256()) },
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 AllowedCorsOrigins = { "https://localhost:44302" },
-                AllowedScopes = 
+                AllowedScopes =
                 {
                     "NotesWebAPI",
                     IdentityServerConstants.StandardScopes.OpenId,
