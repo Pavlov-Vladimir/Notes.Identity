@@ -13,6 +13,6 @@ public class RegisterViewModel
     [Compare("Password")]
     public string ConfirmPassword { get; set; } = null!;
 
-    public string? ReturnUrl { get; set; }
+    public string ReturnUrl { get; set; } = null!;
 
 }

@@ -8,5 +8,5 @@ public class LoginViewModel
     [DataType(DataType.Password)]
     public string Password { get; set; } = null!;
 
-    public string? ReturnUrl { get; set; }
+    public string ReturnUrl { get; set; } = null!;
 }

@@ -17,6 +17,9 @@ public class AuthController : Controller
     [HttpGet]
     public IActionResult Login(string returnUrl)
     {
+        if (string.IsNullOrEmpty(returnUrl))
+            returnUrl = "https://localhost:44302/index.html";
+
         LoginViewModel viewModel = new() { ReturnUrl = returnUrl };
 
         return View(viewModel);
@@ -46,9 +49,12 @@ public class AuthController : Controller
     [HttpGet]
     public IActionResult Register(string returnUrl)
     {
+        if (string.IsNullOrEmpty(returnUrl))
+            returnUrl = "https://localhost:44302/index.html";
+
         var viewModel = new RegisterViewModel() { ReturnUrl = returnUrl };
 
-        return View(returnUrl);
+        return View(viewModel);
     }
 
     [HttpPost]

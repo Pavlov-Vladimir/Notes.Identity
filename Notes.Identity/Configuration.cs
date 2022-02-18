@@ -20,7 +20,8 @@ public static class Configuration
             new ApiResource("NotesWebAPI", "Web API", new [] { JwtClaimTypes.Name })
             {
                 Scopes = {"NotesWebAPI"}
-            }
+            },
+            //new ApiResource("NotesWebAPI")
         };
 
     public static IEnumerable<Client> Clients =>
@@ -34,14 +35,27 @@ public static class Configuration
                 RequireClientSecret = false,
                 RequirePkce = true,
                 AllowAccessTokensViaBrowser = true,
-                RedirectUris = new[] { "http://.../signin-oidc" },
-                AllowedCorsOrigins = new[] { "http://..." },
-                PostLogoutRedirectUris = new[] { "http://.../signout-oidc" },
-                AllowedScopes = new[]
+                RedirectUris = { "http://.../signin-oidc" },
+                AllowedCorsOrigins = { "http://..." },
+                PostLogoutRedirectUris = { "http://.../signout-oidc" },
+                AllowedScopes = 
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
                     "NotesWebAPI"
+                }
+            },
+            new Client
+            {
+                ClientId = "notes-web-swagger",
+                ClientSecrets = { new Secret("client-secret-swagger".Sha256()) },
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                AllowedCorsOrigins = { "https://localhost:44302" },
+                AllowedScopes = 
+                {
+                    "NotesWebAPI",
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile
                 }
             }
         };
