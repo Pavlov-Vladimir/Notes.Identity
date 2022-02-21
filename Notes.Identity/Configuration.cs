@@ -48,7 +48,7 @@ public static class Configuration
             new Client
             {
                 ClientId = "notes-web-swagger",
-                ClientSecrets = { new Secret("client-secret-swagger".Sha256()) },
+                ClientSecrets = { new Secret("notes-swagger-secret".Sha256()) },
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 AllowedCorsOrigins = { "https://localhost:44302" },
                 AllowedScopes =
